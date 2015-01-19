@@ -4,10 +4,12 @@
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.0.0-beta.14",
     "angularfire": "~0.9.1",
-    "firebase": "~2.1.1"
+    "firebase": "~2.1.1",
+    "ngCordova": "~0.1.11-alpha"
   },
   "dependencies": {
     "angularfire": "~0.9.1",
-    "firebase": "~2.1.1"
+    "firebase": "~2.1.1",
+    "ngCordova": "~0.1.11-alpha"
   }
 }

@@ -18,7 +18,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-    $cordovaBluetoothSerial.connect().then(success, error);
+
+//503C4418-D765-5C67-19E2-96FA8D9CBFC6
+  
+      $cordovaBluetoothSerial.connect("4E8953FE-8D07-21F4-063C-4F29B2368B0F", function (){
+          console.log('success');
+      }, function (){
+          console.log('error');
+      });
   });
 })
 
@@ -31,7 +38,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "templates/tabs.html"

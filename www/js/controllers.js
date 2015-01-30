@@ -6,4 +6,10 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+})
+
+.controller('RssiCtrl', function ($scope) {
+	$scope.RSSI = function () {
+		$cordovaBluetoothSerial.readRssi();
+	};
 });

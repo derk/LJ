@@ -8,8 +8,14 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('RssiCtrl', function ($scope) {
+.controller('DisconnectCtrl', function ($scope, $cordovaBluetoothSerial) {
 	$scope.RSSI = function () {
-		$cordovaBluetoothSerial.readRssi();
+		$cordovaBluetoothSerial.readRSSI(function (rssi) {
+			console.log(rssi);
+		});
+	};
+
+	$scope.disconnect = function () {
+		$cordovaBluetoothSerial.disconnect();
 	};
 });

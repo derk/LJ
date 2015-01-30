@@ -25,6 +25,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           console.log('success');
       }, function (){
           console.log('error');
+      }).then(function ( ) {
+        $cordovaBluetoothSerial.readRSSI(function(rssi) {
+          console.log(rssi);
+        });
       });
   });
 })
@@ -51,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'DisconnectCtrl'
       }
     }
   })

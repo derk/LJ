@@ -1,8 +1,12 @@
-<ion-view view-title="Dashboard" ng-controller="RssiCtrl">
+<ion-view view-title="Dashboard" ng-controller="DisconnectCtrl">
   <ion-content class="padding">
     <div class="row-bottom">
         <button class="button button-block button-outline button-assertive" ng-click="RSSI()">
-          Engage LighterJack
+          read RSSI
+        </button>
+
+        <button class="button button-block button-outline button-primary" ng-click="disconnect()">
+          disable LighterJack
         </button>
     </div> 
   </ion-content>

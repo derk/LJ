@@ -1,13 +1,20 @@
-<ion-view view-title="Dashboard" ng-controller="DisconnectCtrl">
+<ion-view view-title="LighterJack" ng-controller="DisconnectCtrl"  style="text-align:center;">
   <ion-content class="padding">
-    <div class="row-bottom">
-        <button class="button button-block button-outline button-assertive" ng-click="RSSI()">
+    
+        <!--<button class="button button-block button-outline button-assertive" ng-click="RSSI()">
           read RSSI
         </button>
-
         <button class="button button-block button-outline button-primary" ng-click="disconnect()">
           disable LighterJack
         </button>
-    </div> 
+        <button class="button button-block button-outline button-assertive" ng-click="foobar()">
+          foo bar 
+        </button>
+        -->
+        
+        <div class="round-button round-button-circle button-block">
+        <a ng-click="connect()" class="round-button">Engage LighterJack</a>
+        </div>
+      
   </ion-content>
 </ion-view>

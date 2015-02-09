@@ -1,0 +1,43 @@
+{
+  "name": "jslog-me",
+  "version": "1.0.3",
+  "homepage": "https://github.com/mentatxx/jslog",
+  "authors": [
+    "support@jslog.me"
+  ],
+  "description": "Cloud logger for Phonegap/Cordova hybrid applications and web applications",
+  "main": "lib/jslog.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "Logger",
+    "Error",
+    "log",
+    "Cordova",
+    "Hybrid",
+    "apps",
+    "console",
+    "cloud"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.3",
+    "commit": "c2f8408c6e274ba37a551a150172b5b3aa17e6ac"
+  },
+  "_source": "git://github.com/mentatxx/jslog.git",
+  "_target": "~1.0.3",
+  "_originalSource": "jslog-me",
+  "_direct": true
+}

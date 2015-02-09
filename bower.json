@@ -8,8 +8,9 @@
     "ngCordova": "~0.1.11-alpha"
   },
   "dependencies": {
-    "angularfire": "~0.9.1",
-    "firebase": "~2.1.1",
-    "ngCordova": "~0.1.11-alpha"
+    "angularfire": "~0.9.2",
+    "firebase": "~2.1.2",
+    "ngCordova": "~0.1.11-alpha",
+    "jslog-me": "~1.0.3"
   }
 }

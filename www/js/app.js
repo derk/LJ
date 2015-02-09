@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.services', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaBluetoothSerial) {
+.run(function($ionicPlatform, $cordovaBluetoothSerial, $cordovaPush) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,19 +19,51 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
 
-//503C4418-D765-5C67-19E2-96FA8D9CBFC6
-  
-      $cordovaBluetoothSerial.connect("4E8953FE-8D07-21F4-063C-4F29B2368B0F", function (){
-          console.log('success');
-      }, function (){
-          console.log('error');
-      }).then(function ( ) {
-        $cordovaBluetoothSerial.readRSSI(function(rssi) {
-          console.log(rssi);
+    var iosConfig = {
+    "badge": true,
+    "sound": true,
+    "alert": true,
+  };
+
+  document.addEventListener("deviceready", function(){
+    $cordovaPush.register(config).then(function(result) {
+      // Success -- send deviceToken to server, and store for future use
+      console.log("result: " + result)
+      $http.post("http://server.co/", {user: "Bob", tokenID: result.deviceToken})
+    }, function(err) {
+      alert("Registration error: " + err)
+    });
+
+
+    $rootScope.$on('$cordovaPush:pushNotificationReceived', function(event, notification) {
+      if (notification.alert) {
+        navigator.notification.alert(notification.alert);
+      }
+
+      if (notification.sound) {
+        var snd = new Media(event.sound);
+        snd.play();
+      }
+
+      if (notification.badge) {
+        $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
+          // Success!
+        }, function(err) {
+          // An error occurred. Show a message to the user
         });
-      });
-  });
-})
+      }
+    });
+
+    // WARNING! dangerous to unregister (results in loss of tokenID)
+    $cordovaPush.unregister(options).then(function(result) {
+      // Success!
+    }, function(err) {
+      // Error
+    });
+
+  }, false);
+    });
+  })
 
 .config(function($stateProvider, $urlRouterProvider) {
 

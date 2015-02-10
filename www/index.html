@@ -31,9 +31,17 @@
     <script src="js/services.js"></script>
     <!-- ionic/angularjs js -->
     <style>
+
+    div.tab-nav.tabs {
+      background-color: black;
+      border-color: black;
+    }
     .bar {
       color:white;
       background-color:black;
+      }
+    i.icon {
+      color:white;
     }
 
     .round-button {
@@ -48,12 +56,15 @@
       border:10px solid #EF473A;
         overflow:hidden;
         
-        background: white; 
+        background: #EF473A;
+        color:white; 
         box-shadow: 0 0 3px gray;
     }
     .round-button-circle:hover {
-      background:#EF473A;
-      color:white;
+      background:white;
+    }
+    .round-button-circle a:hover{
+      color: #EF473A;
     }
     .round-button a {
         display:block;
@@ -65,7 +76,7 @@
       margin-top:-0.5em;
         
       text-align:center;
-      color:#EF473A;
+      color:white;
         font-family:Verdana;
         font-size:1.2em;
         font-weight:bold;

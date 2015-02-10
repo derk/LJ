@@ -13,8 +13,8 @@ angular.module('starter.controllers', [])
 	var sync = $firebase(ref);
 
 	$scope.foobar = function () {
-		sync.$push({butt: "cheek"}).then(function () {
-			console.log('success nigga');
+		sync.$push({foo: "bar"}).then(function () {
+			console.log('success');
 		});
 	};
 
@@ -31,10 +31,10 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.connect = function () {
-		$cordovaBluetoothSerial.connect("2CFBD790-596B-1C4E-1EED-5507C3AC5A87", function () {
+		$cordovaBluetoothSerial.connect("4E8953FE-8D07-21F4-063C-4F29B2368B0F", function () {
 			console.log('connectded');
 		}, function () {
-			console.log('error nigga');
+			console.log('error');
 		});
 	};
 });

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.services', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaBluetoothSerial, $cordovaPush) {
+.run(function($ionicPlatform, $cordovaBluetoothSerial, $cordovaBadge, $cordovaPush) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,12 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
       StatusBar.styleDefault();
     }
 
+    $cordovaBadge.hasPermission().then(function(yes) {
+        console.log(yes);
+      }, function(no) {
+        console.log(no);
+    });
+
     var iosConfig = {
     "badge": true,
     "sound": true,
@@ -26,7 +32,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
   };
 
   document.addEventListener("deviceready", function(){
-    $cordovaPush.register(config).then(function(result) {
+    $cordovaPush.register(iosConfig).then(function(result) {
       // Success -- send deviceToken to server, and store for future use
       console.log("result: " + result)
       $http.post("http://server.co/", {user: "Bob", tokenID: result.deviceToken})

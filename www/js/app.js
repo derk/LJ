@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.services', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaBluetoothSerial, $cordovaBadge, $cordovaPush) {
+.run(function($ionicPlatform, $cordovaBluetoothSerial, $cordovaBadge, $cordovaPush, $http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -26,18 +26,16 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
     });
 
     var iosConfig = {
-    "badge": true,
-    "sound": true,
-    "alert": true,
-  };
+        "badge":"true",
+        "sound":"true",
+        "alert":"true"
+    };
 
-  document.addEventListener("deviceready", function(){
-    $cordovaPush.register(iosConfig).then(function(result) {
+    $cordovaPush.register(config).then(function(result) {
       // Success -- send deviceToken to server, and store for future use
-      console.log("result: " + result)
-      $http.post("http://server.co/", {user: "Bob", tokenID: result.deviceToken})
+      alert('token: '+result.deviceToken);
     }, function(err) {
-      alert("Registration error: " + err)
+      alert("Registration error: " + err);
     });
 
 
@@ -60,14 +58,14 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
       }
     });
 
-    // WARNING! dangerous to unregister (results in loss of tokenID)
+/*    // WARNING! dangerous to unregister (results in loss of tokenID)
     $cordovaPush.unregister(options).then(function(result) {
       // Success!
     }, function(err) {
       // Error
     });
-
-  }, false);
+*/
+ 
     });
   })
 

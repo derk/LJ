@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('DisconnectCtrl', function ($scope, $cordovaBluetoothSerial, $firebase) {
+.controller('DisconnectCtrl', function ($scope, $cordovaBluetoothSerial, $cordovaPush, $firebase) {
 	var ref = new Firebase("https://lighterjack.firebaseio.com/");
 	var sync = $firebase(ref);
 
@@ -37,4 +37,12 @@ angular.module('starter.controllers', [])
 			console.log('error');
 		});
 	};
+
+	$scope.kingPush = function () {
+		$cordovaPush.onRegister().then(function() {
+			alert('yee');
+		}, function () {
+			alert('knee');
+		})
+	}
 });

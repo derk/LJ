@@ -26,19 +26,18 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
     });
 
     var iosConfig = {
-        "badge":"true",
-        "sound":"true",
-        "alert":"true"
+      'badge':'true', 
+      'sound':'true', 
+      'alert':'true'
     };
 
-    $cordovaPush.register(config).then(function(result) {
+    $cordovaPush.register(iosConfig).then(function(result) {
       // Success -- send deviceToken to server, and store for future use
-      alert('token: '+result.deviceToken);
+      alert('result: '+ result);
     }, function(err) {
       alert("Registration error: " + err);
     });
-
-
+  
     $rootScope.$on('$cordovaPush:pushNotificationReceived', function(event, notification) {
       if (notification.alert) {
         navigator.notification.alert(notification.alert);
@@ -57,6 +56,7 @@ angular.module('starter', ['ionic', 'firebase', 'starter.controllers', 'starter.
         });
       }
     });
+
 
 /*    // WARNING! dangerous to unregister (results in loss of tokenID)
     $cordovaPush.unregister(options).then(function(result) {
